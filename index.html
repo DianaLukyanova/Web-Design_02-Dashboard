@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#f7f3f0" />
+    <meta
+      name="description"
+      content="Тихий кампус — уютный учебный дашборд. Планируй день, учись в своем ритме и открывай новое."
+    />
+    <title>Тихий кампус — твое место для учебы</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='12' fill='%23e8bdcc'/%3E%3Cpath d='M9 12q6-3 11 1 5-4 11-1v17q-6-3-11 0-5-3-11 0z' fill='none' stroke='%235e3c50' stroke-width='2'/%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="./styles/main.css" />
+    <link rel="stylesheet" href="./styles/components.css" />
+    <script type="module" src="./main.js"></script>
+  </head>
+  <body>
+    <svg
+      class="icon-library"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <defs>
+        <symbol id="i-grid" viewBox="0 0 24 24">
+          <rect x="3" y="3" width="7" height="7" rx="2" />
+          <rect x="14" y="3" width="7" height="7" rx="2" />
+          <rect x="3" y="14" width="7" height="7" rx="2" />
+          <rect x="14" y="14" width="7" height="7" rx="2" />
+        </symbol>
+        <symbol id="i-book" viewBox="0 0 24 24">
+          <path d="M3 5q5-2 9 1 4-3 9-1v15q-5-2-9 0-4-2-9 0zM12 6v14" />
+        </symbol>
+        <symbol id="i-check" viewBox="0 0 24 24">
+          <rect x="3" y="3" width="18" height="18" rx="5" />
+          <path d="m7 12 3 3 7-7" />
+        </symbol>
+        <symbol id="i-clock" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="9" />
+          <path d="M12 7v5l3 2" />
+        </symbol>
+        <symbol id="i-sun" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="4" />
+          <path
+            d="M12 1v3m0 16v3M1 12h3m16 0h3M4 4l2 2m12 12 2 2M4 20l2-2M18 6l2-2"
+          />
+        </symbol>
+        <symbol id="i-spark" viewBox="0 0 24 24">
+          <path d="m12 2 3 7 7 3-7 3-3 7-3-7-7-3 7-3z" />
+        </symbol>
+        <symbol id="i-arrow" viewBox="0 0 24 24">
+          <path d="M5 12h14m-5-5 5 5-5 5" />
+        </symbol>
+      </defs>
+    </svg>
+    <a class="skip-link" href="#dashboard">К виджетам</a>
+    <aside class="sidebar">
+      <a href="#dashboard" class="brand" aria-label="Тихий кампус, главная"
+        ><span class="brand-mark"
+          ><svg class="icon"><use href="#i-book" /></svg></span
+        ><span
+          >тихий<br /><b>кампус</b></span
+        ></a
+      >
+      <nav id="widget-options" aria-label="Открыть виджет"></nav>
+      <button class="sidebar-all" type="button" data-open-all>Открыть все шесть <span>↗</span></button>
+      <div class="sidebar-bottom"><div class="profile"><img class="avatar profile-photo" src="./assets/diana-portrait.jpg" alt="Диана Лукьянова" width="64" height="76" /><div><strong>DIANA<br>LUKYANOVA</strong></div></div></div>
+    </aside>
+    <div class="workspace">
+      <header class="topbar"><span>Личный дашборд / 2026</span></header>
+      <main id="dashboard">
+        <div class="page-heading">
+          <div>
+            <h1>Привет, Диана <span class="greeting-heart" aria-hidden="true">♥</span></h1>
+            <p>Сегодня есть время и на дела, и на себя</p>
+          </div>
+          <span class="workspace-label"><i></i> Личное пространство</span>
+        </div>
+        <div class="section-heading">
+          <h2>На моем столе <span id="widget-count">6 из 6 открыто</span></h2>
+
+        </div>
+        <p id="storage-note" class="storage-note" role="alert" hidden>
+          Хранилище браузера недоступно. Изменения сохранятся только до
+          перезагрузки.
+        </p>
+        <p id="widget-status" class="sr-only" role="status"></p>
+        <div id="widgets-empty" class="widgets-empty" hidden>
+          <h3>Немного свободного пространства</h3>
+          <p>Все виджеты закрыты. Открой нужные кнопками слева или верни их все.</p>
+          <button type="button" class="primary" data-open-all>Открыть все виджеты</button>
+        </div>
+        <div class="dashboard-grid">
+          <section
+            class="widget tasks-widget"
+            id="tasks"
+            aria-labelledby="tasks-title"
+          >
+            <div class="widget-heading">
+              <span class="widget-icon pink"
+                ><svg class="icon"><use href="#i-check" /></svg
+              ></span>
+              <h2 id="tasks-title">Делишки на сегодня</h2>
+              <span class="card-number">01</span>
+            </div>
+            <div class="progress-caption">
+              <span>Маленькие шаги — тоже шаги</span
+              ><span id="task-count"></span>
+            </div>
+            <progress
+              id="task-progress"
+              max="1"
+              value="0"
+              aria-label="Прогресс выполнения задач"
+            ></progress>
+            <ul id="task-list"></ul>
+            <form id="task-form" class="input-row">
+              <input
+                name="task"
+                aria-label="Новая задача"
+                maxlength="120"
+                placeholder="Что хочется сделать?"
+                required
+                autocomplete="off"
+              /><button
+                class="add-button"
+                aria-label="Добавить задачу"
+                type="submit"
+              >
+                +
+              </button>
+            </form>
+            <p class="widget-footer">Освободи мысли. Запиши самое важное.</p>
+          </section>
+          <section
+            class="widget focus-widget"
+            id="focus"
+            aria-labelledby="focus-title"
+          >
+            <div class="widget-heading">
+              <span class="widget-icon pink"
+                ><svg class="icon"><use href="#i-clock" /></svg
+              ></span>
+              <h2 id="focus-title">Минутка фокуса</h2>
+              <span class="card-number">02</span>
+            </div>
+            <div class="timer-tabs" aria-label="Режим таймера">
+              <button data-minutes="25" aria-pressed="true">
+                Фокус · 25 мин</button
+              ><button data-minutes="5" aria-pressed="false">
+                Отдых · 5 мин
+              </button>
+            </div>
+            <div class="timer-ring" id="timer-ring">
+              <div>
+                <strong id="timer-value" role="timer">25:00</strong
+                ><span>ВРЕМЯ ДЛЯ ВАЖНОГО</span>
+              </div>
+            </div>
+            <div class="timer-actions">
+              <button class="primary" id="timer-toggle" aria-pressed="false">
+                Начать фокус</button
+              ><button
+                class="reset-button"
+                id="timer-reset"
+                aria-label="Сбросить таймер"
+              >
+                ↺
+              </button>
+            </div>
+            <p class="widget-footer" id="timer-status" aria-live="polite">
+              Одна задача. Никакой спешки.
+            </p>
+          </section>
+          <section
+            class="widget rhythm-widget"
+            id="rhythm"
+            aria-labelledby="rhythm-title"
+          >
+            <div class="widget-heading">
+              <span class="widget-icon green"
+                ><svg class="icon"><use href="#i-sun" /></svg
+              ></span>
+              <h2 id="rhythm-title">Настрой на день</h2>
+              <span class="card-number">03</span>
+            </div>
+            <div class="clock-wrap">
+              <p class="small-caps">ТВОЕ ВРЕМЯ — СЕЙЧАС</p>
+              <strong id="clock">--:--</strong>
+              <p id="rhythm-date"></p>
+            </div>
+            <label class="goal-label" for="daily-goal"
+              >Моя маленькая цель на сегодня</label
+            ><textarea
+              id="daily-goal"
+              maxlength="200"
+              rows="2"
+              placeholder="Например, разобраться с одной сложной темой…"
+            ></textarea>
+            <p class="widget-footer" id="goal-state" aria-live="polite">
+              Только одна. И это уже много.
+            </p>
+          </section>
+          <section class="widget budget-widget" id="budget" aria-labelledby="budget-title">
+            <div class="widget-heading">
+              <span class="widget-icon peach budget-currency-icon" aria-hidden="true">₽</span>
+              <h2 id="budget-title">Денежка на учебу</h2><span class="api-badge">API</span>
+            </div>
+            <p class="budget-intro">Прикинь стоимость курса, книги или подписки</p>
+            <form id="budget-form">
+              <label class="budget-label" for="budget-amount">Стоимость</label>
+              <input id="budget-amount" name="amount" type="number" min="0" max="100000000" step="any" value="25" required>
+              <div class="budget-currencies">
+                <label>Из <select name="base" aria-label="Исходная валюта"><option>EUR</option><option>USD</option><option>GBP</option><option>CHF</option><option>JPY</option></select></label>
+                <button type="button" id="budget-swap" aria-label="Поменять валюты местами">⇄</button>
+                <label>В <select name="target" aria-label="Валюта результата"><option>USD</option><option>EUR</option><option>GBP</option><option>CHF</option><option>JPY</option></select></label>
+              </div>
+              <button class="outline-button" type="submit">Рассчитать стоимость <span>↗</span></button>
+            </form>
+            <div id="budget-body" class="api-body" aria-live="polite"></div>
+            <p class="budget-disclaimer">Справочный курс, без комиссий банка.</p>
+            <div class="source"><span class="source-dot"></span>Курсы Frankfurter <a href="https://frankfurter.dev/" target="_blank" rel="noopener noreferrer" aria-label="Открыть Frankfurter">↗</a></div>
+          </section>
+          <section
+            class="widget books-widget"
+            id="books"
+            aria-labelledby="books-title"
+          >
+            <div class="widget-heading">
+              <span class="widget-icon lavender"
+                ><svg class="icon"><use href="#i-book" /></svg
+              ></span>
+              <h2 id="books-title">Книжки под рукой</h2>
+              <span class="api-badge">API</span>
+            </div>
+            <form class="input-row compact" id="books-form">
+              <input
+                name="query"
+                aria-label="Название книги, автор или тема"
+                maxlength="100"
+                value="design"
+                placeholder="Название, автор или тема"
+                required
+              /><button type="submit" aria-label="Найти книги">↗</button>
+            </form>
+            <div id="books-body" class="api-body" aria-live="polite"></div>
+            <div class="source">
+              <span class="source-dot"></span>Библиотека Open Library
+              <a
+                href="https://openlibrary.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Перейти в Open Library"
+                >↗</a
+              >
+            </div>
+          </section>
+          <section
+            class="widget discovery-widget"
+            id="discovery"
+            aria-labelledby="discovery-title"
+          >
+            <div class="widget-heading">
+              <span class="widget-icon pink"
+                ><svg class="icon"><use href="#i-spark" /></svg
+              ></span>
+              <h2 id="discovery-title">Копилка открытий</h2>
+              <span class="api-badge">API</span>
+            </div>
+            <div class="topic-label">МИНУТКА ЛЮБОПЫТСТВА</div>
+            <div id="discovery-body" class="api-body" aria-live="polite"></div>
+            <button class="outline-button" id="discovery-next">
+              Еще одно открытие <span>↻</span>
+            </button>
+            <div class="source">
+              <span class="source-dot"></span>Статьи из Википедии
+              <a
+                href="https://ru.wikipedia.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Перейти в Википедию"
+                >↗</a
+              >
+            </div>
+          </section>
+        </div>
+        <footer class="page-footer">
+          <span
+            >тихий кампус
+            <span class="footer-separator">/</span> Твое уютное место для
+            учебы</span
+          ><span
+            >С заботой о твоем ритме <span aria-hidden="true">♡</span></span
+          >
+        </footer>
+        <noscript>Для работы виджетов необходимо включить JavaScript.</noscript>
+      </main>
+    </div>
+  </body>
+</html>
